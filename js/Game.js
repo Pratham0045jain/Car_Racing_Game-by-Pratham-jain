@@ -41,6 +41,8 @@ class Game {
   }
 
   play(){
+    player.getRankInfo();
+
     form.hide();
     
     Player.getPlayerInfo();
@@ -91,14 +93,21 @@ class Game {
       player.update();
     }
 
-    if(player.distance > 3860){
+    
+    if(player.distance > 5300){
       gameState = 2;
+      player.rank+=1;
+      Player.updateRank(player.rank);
     }
+
+
    
     drawSprites();
   }
 
   end(){
     console.log("Game Ended");
+    console.log(player.rank + ": " + player.name);
+    
   }
 }
